@@ -1,8 +1,9 @@
 import { useState } from "react"
-import logoUno from "./assets/Logo.jpeg"
-import logoDos from "./assets/MadeproDismapro.jpeg"
+import { NavBar } from "../components/NavBar"
+
 
 export function LoginPage() {
+
   // Estado para identificar si se seleccionó Usuario o Administrador
   const [role, setRole] = useState(null)
 
@@ -42,20 +43,7 @@ export function LoginPage() {
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-white shadow">
-        <div className="container mx-auto flex justify-between items-center px-4 py-3">
-          <div className="flex items-center space-x-4">
-            <img src={logoUno} alt="Logo 1" className="h-16" />
-            {/* <img src={logoDos} alt="Logo 2" className="h-12" /> */}
-          </div>
-          <ul className="hidden md:flex space-x-6 text-black">
-            <li><a href="#" className="hover:underline">Misión</a></li>
-            <li><a href="#" className="hover:underline">Visión</a></li>
-            <li><a href="#" className="hover:underline">Nosotros</a></li>
-            <li><a href="#" className="hover:underline">Trabaja con nosotros</a></li>
-          </ul>
-        </div>
-      </nav>
+      <NavBar/>
 
       {/* Contenido Principal */}
       <div className="container mx-auto px-4 mt-20">

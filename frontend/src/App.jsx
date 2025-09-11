@@ -1,10 +1,12 @@
 import './App.css'
-import { LoginPage } from './LoginPage'  
+import { LoginPage } from './pages/LoginPage.jsx'
+import { RegistroPage } from './pages/RegistroPage.jsx'
 
-{/* Se importan los componentes */}
+
 function App() {
   return (
     <LoginPage />  
+
   )
 }
 
