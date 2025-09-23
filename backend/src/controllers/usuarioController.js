@@ -1,3 +1,9 @@
-module.exports.usuario = (req, res) => {
-  res.send('Soy un usuario!');
-};
+const mysql = require('mysql2');
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '', 
+  database: 'madepro_db'
+});
+
