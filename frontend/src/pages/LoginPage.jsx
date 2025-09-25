@@ -44,7 +44,11 @@ export function LoginPage() {
 
       if (response.ok) {
         alert("Login correcto! Redirigiendo a RegistroPage...")
-        navigate("/registro") 
+
+        
+        navigate("/menuPrincipal") 
+
+      
       } else {
         setError(data.message || "Usuario o contraseña incorrectos.")
       }
