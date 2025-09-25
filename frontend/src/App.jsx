@@ -1,12 +1,15 @@
-import './App.css'
-import { LoginPage } from './pages/LoginPage.jsx'
-import { RegistroPage } from './pages/RegistroPage.jsx'
-
+import { Routes, Route } from "react-router-dom"
+import { LoginPage } from "./pages/LoginPage"
+import { RegistroPage } from "./pages/RegistroPage"
+import { MenuPrincipalPage } from "./pages/MenuPrincipalPage"
 
 function App() {
   return (
-    <LoginPage />  
-
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/registro" element={<RegistroPage />} />
+      <Route path="/menuPrincipal" element={<MenuPrincipalPage />} />
+    </Routes>
   )
 }
 
