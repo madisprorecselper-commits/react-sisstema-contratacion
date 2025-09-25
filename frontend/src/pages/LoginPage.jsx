@@ -1,51 +1,68 @@
 import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import { NavBar } from "../components/NavBar"
 
-
 export function LoginPage() {
-
-  // Estado para identificar si se seleccionó Usuario o Administrador
-  const [role, setRole] = useState(null)
-
-  // Estado para inputs del formulario
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-
-  // Estado para manejar errores
+  const [role, setRole] = useState(null) // Usuario o Administrador
+  const [UserName, setUserName] = useState("")
+  const [PassWord, setPassWord] = useState("")
   const [error, setError] = useState("")
+  const navigate = useNavigate()
 
-  // Clases dinámicas de botones según selección
-  const buttonUser = role === "usuario"
-    ? "bg-blue-500 text-white px-4 py-2 rounded"
-    : "bg-orange-900 text-white px-4 py-2 rounded"
+  // Estilos dinámicos de botones
+  const buttonUser =
+    role === "usuario"
+      ? "bg-blue-500 text-white px-4 py-2 rounded"
+      : "bg-orange-900 text-white px-4 py-2 rounded"
 
-  const buttonAdministrador = role === "administrador"
-    ? "bg-blue-500 text-white px-4 py-2 rounded"
-    : "bg-orange-900 text-white px-4 py-2 rounded"
+  const buttonAdministrador =
+    role === "administrador"
+      ? "bg-blue-500 text-white px-4 py-2 rounded"
+      : "bg-orange-900 text-white px-4 py-2 rounded"
 
-  // Manejadores de clic en botones
   const handleUserClick = () => setRole("usuario")
   const handleAdminClick = () => setRole("administrador")
 
-  // Manejo del submit del formulario
-  const handleSubmit = (e) => {
+  // Enviar login
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Validaciones básicas
-    if (!username || !password || !role) {
-      setError("Todos los campos son obligatorios (incluyendo seleccionar un rol).")
+    // Validaciones
+    if (!UserName || !PassWord || !role) {
+      setError("Todos los campos son obligatorios (incluyendo rol).")
       return
     }
 
-   
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ UserName, PassWord, role }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        alert("Login correcto! Redirigiendo a RegistroPage...")
+
+        
+        navigate("/menuPrincipal") 
+
+      
+      } else {
+        setError(data.message || "Usuario o contraseña incorrectos.")
+      }
+    } catch (err) {
+      console.error(err)
+      setError("Error de conexión con el servidor.")
+    }
   }
 
   return (
     <>
       {/* Navbar */}
-      <NavBar/>
+      <NavBar />
 
-      {/* Contenido Principal */}
       <div className="container mx-auto px-4 mt-20">
         <div className="max-w-md mx-auto bg-gray-200 p-6 rounded-lg shadow-md">
           <h2 className="text-center text-xl font-semibold text-gray-800 mb-6">
@@ -68,8 +85,8 @@ export function LoginPage() {
               <input
                 type="text"
                 placeholder="Usuario"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={UserName}
+                onChange={(e) => setUserName(e.target.value)}
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
               />
             </div>
@@ -77,32 +94,31 @@ export function LoginPage() {
               <input
                 type="password"
                 placeholder="Contraseña"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={PassWord}
+                onChange={(e) => setPassWord(e.target.value)}
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
               />
             </div>
 
             {/* Validación de errores */}
-            {error && (
-              <p className="text-red-600 text-sm mb-4">{error}</p>
-            )}
+            {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
             <div className="text-center mb-4">
-              <a
-                href="./recuperarContraseña.html"
+              <Link
+                to="/recuperar"
                 className="text-orange-900 hover:underline text-sm"
               >
                 ¿Olvidó su contraseña?
-              </a>
+              </Link>
             </div>
+
             <div className="flex justify-center gap-4">
-              <a
-                href="./registro.html"
+              <Link
+                to="/registro"
                 className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
               >
                 Registrarse
-              </a>
+              </Link>
               <button
                 type="submit"
                 className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
