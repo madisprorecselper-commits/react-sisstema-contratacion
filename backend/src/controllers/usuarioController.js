@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-
+//LOGIN VALIDACIÓN USUARIO      
 module.exports.login = (req, res) => {
   const { UserName, PassWord } = req.body;
 
@@ -23,4 +23,23 @@ module.exports.login = (req, res) => {
   });
 
 };
+//REGISTRO USUARIO
+module.exports.registro = (req, res) => {
+  const { UserName, PassWord, Nombre, Documento, Email, Telefono } = req.body;
 
+  if (!UserName || !PassWord || !Nombre || !Documento || !Email || !Telefono) {
+    return res.status(400).json({ success: false, message: 'Todos los campos son obligatorios' });
+  }
+
+  const query = `INSERT INTO usuario (UserName, PassWord, Nombre, Documento, Email, Telefono) 
+                 VALUES (?, ?, ?, ?, ?, ?)`;
+
+  db.query(query, [UserName, PassWord, Nombre, Documento, Email, Telefono], (err, result) => {
+    if (err) {
+      console.error('Error al registrar usuario:', err);
+      return res.status(500).json({ success: false, message: 'Error del servidor' });
+    }
+
+    return res.status(201).json({ success: true, message: 'Usuario registrado correctamente', id: result.insertId });
+  });
+};
