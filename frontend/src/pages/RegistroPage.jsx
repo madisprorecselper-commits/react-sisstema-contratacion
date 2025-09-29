@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { NavBar } from "../components/NavBar"
 
 export function RegistroPage() {
+    const navigate = useNavigate()
   const [formData, setFormData] = useState({
     UserName: "",
     PassWord: "",
@@ -20,30 +22,30 @@ export function RegistroPage() {
     })
   }
 
-  // Enviar datos al backend
+ 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/registro", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+      const response = await fetch('http://localhost:3000/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
-      })
+      });
 
-      const data = await res.json()
+      const data = await response.json();
+
       if (data.success) {
-        alert("Usuario registrado correctamente")
+        alert('Registro exitoso YA PUEDES INICIAR SESIÓN!');
+        navigate('/login'); 
       } else {
-        alert("" + data.message)
+        alert(data.message);
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error)
-      alert("Error al conectar con el servidor")
+      console.error('Error:', error);
+      alert('Error al conectar con el servidor');
     }
-  }
+  };
 
   return (
     <>
