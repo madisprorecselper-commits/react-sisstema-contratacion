@@ -37,7 +37,7 @@ export function RegistroPage() {
 
       if (data.success) {
         alert('Registro exitoso YA PUEDES INICIAR SESIÓN!');
-        navigate('/login'); 
+        navigate('/'); 
       } else {
         alert(data.message);
       }

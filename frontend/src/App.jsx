@@ -7,7 +7,7 @@ import { MenuPrincipalPage } from "./pages/MenuPrincipalPage"
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/registro" element={<RegistroPage />} />
       <Route path="/menuPrincipal" element={<MenuPrincipalPage />} />
     </Routes>
