@@ -63,7 +63,7 @@ export function LoginPage() {
           </div>
 
           {/* Formulario */}
-          <from onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 type="text"
@@ -109,56 +109,13 @@ export function LoginPage() {
               >
                 Iniciar Sesión
               </button>
-                
-                import { Welcomemessage } from "../components/welcomemessage";
-                const [username, setUsername] = useState("");
-                const [password, setPassword] = useState("");
-                const [role, setWelcome] = useSate("");
-                const [Welcome, setWelcome] = useState("");
+           </div> 
+        </form>
 
-                const handleLogin = (e) => {
-                  E.preventDefraul();
-
-                  setWelcome(username);
-                };
-
-                return  (
-                  <div>
-                    {!welcome? (
-                      <from onSubmit={handleLogin}>
-                        <input
-                          type="text"
-                          placeholder="Usuario"
-                          value={username}
-                          onChange={(e) =>setErrorUsername(e.target.value)}
-                        />
-                        <input
-                         type="password"
-                         placeholder="contraseña"
-                         value={password}
-                         onChange={(e) => setPassword(e.targwt.value)}
-                        />
-                        <button type="submit">Iniciar Sesion</button>
-                      </from>
-                    ) : (
-                      <Welcomemessage name={welcome} />
-
-                   )}
-                </div>
-                );
-    
-
-                    )
-
-                  </div>
-                )
-
-              
-
-            </div>
-          </from>
-        </div>
+        {/* Saludo de bienvenida */}
+          {isLogged && <Welcomemessage name={username} />}
       </div>
+    </div>
     </>
   )
 }
