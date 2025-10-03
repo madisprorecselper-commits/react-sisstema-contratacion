@@ -1,5 +1,5 @@
 import { NavBar } from "../components/NavBar"
-
+import { WelcomeMessage } from "../pages/WelcomeMessage";
 export function MenuPrincipalPage() {
   return (
     <>
@@ -8,8 +8,12 @@ export function MenuPrincipalPage() {
       <div className="container mx-auto mt-20 px-4">
         <div className="max-w-xl mx-auto bg-gray-200 rounded-lg shadow-md p-6">
           <h2 className="text-center text-xl font-semibold text-gray-800 mb-6">
+            
             Bienvenido
+        
           </h2>
+          
+             <WelcomeMessage name={userName} />
 
           <div className="flex flex-wrap justify-center gap-4">
             <a

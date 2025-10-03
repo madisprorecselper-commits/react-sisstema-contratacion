@@ -45,7 +45,7 @@ export function LoginPage() {
       if (response.ok) {
         alert("Login correcto! Redirigiendo a RegistroPage...")
 
-        
+        localStorage.setItem("userName", UserName)        
         navigate("/menuPrincipal") 
 
       
