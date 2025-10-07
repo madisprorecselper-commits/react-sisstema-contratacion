@@ -43,3 +43,5 @@ module.exports.registro = (req, res) => {
     return res.status(201).json({ success: true, message: 'Usuario registrado correctamente', id: result.insertId });
   });
 };
+
+//CREAR CURRICULUM

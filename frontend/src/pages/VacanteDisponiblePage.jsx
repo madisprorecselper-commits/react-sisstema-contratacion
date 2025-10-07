@@ -1,9 +1,10 @@
 import React from "react";
-import NavBar from "./NavBar";
+import { NavBar } from "../components/NavBar"
+import { useNavigate, Link } from "react-router-dom"
 
-const BuscarVacante = () => {
+export function VacanteDisponiblePage() {
   return (
-    <div className="bg-orange-900 min-h-screen">
+    <>
       {/* Navbar */}
       <NavBar />
 
@@ -114,8 +115,8 @@ const BuscarVacante = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default BuscarVacante;
+
