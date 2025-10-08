@@ -1,8 +1,10 @@
+import { Routes, Route } from "react-router-dom";
+import { LoginPage } from "./pages/LoginPage";
+import { RegistroPage } from "./pages/RegistroPage";
+import { MenuPrincipalPage } from "./pages/MenuPrincipalPage";
+import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
+import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
 
-import { Routes, Route } from "react-router-dom"
-import { LoginPage } from "./pages/LoginPage"
-import { RegistroPage } from "./pages/RegistroPage"
-import { MenuPrincipalPage } from "./pages/MenuPrincipalPage"
 
 function App() {
   return (
@@ -10,9 +12,11 @@ function App() {
       <Route path="/" element={<LoginPage />} />
       <Route path="/registro" element={<RegistroPage />} />
       <Route path="/menuPrincipal" element={<MenuPrincipalPage />} />
+      <Route path="/crearCurriculum" element={<CrearCurriculumPage />} />
+      <Route path="/vacantesDisponibles" element={<VacanteDisponiblePage />} />
+    
     </Routes>
-  )
-
+  );
 }
 
 export default App;
