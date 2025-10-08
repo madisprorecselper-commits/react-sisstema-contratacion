@@ -1,4 +1,5 @@
 import { NavBar } from "../components/NavBar"
+import { useNavigate, Link } from "react-router-dom"
 
 export function MenuPrincipalPage() {
   return (
@@ -12,24 +13,25 @@ export function MenuPrincipalPage() {
           </h2>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              //href="./crearCurricilum.html"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Crear tu currículum
-            </a>
-            <a
-              //href="./vacantesDisponibles.html"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Vacante Disponible
-            </a>
-            <a
-              //href="#"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Tu perfil
-            </a>
+               <Link
+                to="/crearCurriculum"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Crear tu currículum
+              </Link>
+            
+             <Link
+                to="/vacanteDisponible"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Vacante Disponible
+              </Link>
+             <Link
+                to="/"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Tu Perfil
+              </Link>
           </div>
         </div>
       </div>
