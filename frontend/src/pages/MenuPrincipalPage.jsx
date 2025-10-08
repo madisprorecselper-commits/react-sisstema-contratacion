@@ -1,5 +1,10 @@
 import { NavBar } from "../components/NavBar"
+<<<<<<< HEAD
 import { WelcomeMessage } from "../pages/WelcomeMessage";
+=======
+import { useNavigate, Link } from "react-router-dom"
+
+>>>>>>> 48f3985eb3316e14233c74b7f587cab9586df483
 export function MenuPrincipalPage() {
   return (
     <>
@@ -16,24 +21,25 @@ export function MenuPrincipalPage() {
              <WelcomeMessage name={userName} />
 
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              //href="./crearCurricilum.html"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Crear tu currículum
-            </a>
-            <a
-              //href="./vacantesDisponibles.html"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Vacante Disponible
-            </a>
-            <a
-              //href="#"
-              className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
-            >
-              Tu perfil
-            </a>
+               <Link
+                to="/crearCurriculum"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Crear tu currículum
+              </Link>
+            
+             <Link
+                to="/vacanteDisponible"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Vacante Disponible
+              </Link>
+             <Link
+                to="/"
+                className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
+              >
+                Tu Perfil
+              </Link>
           </div>
         </div>
       </div>
