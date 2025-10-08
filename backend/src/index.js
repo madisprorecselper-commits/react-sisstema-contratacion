@@ -1,16 +1,12 @@
 const express = require('express');
-const app = express();
-const port = 3000;
-
-// Importa rutas
+const cors = require('cors');
 const routes = require('./api/endPoints');
 
-// Middleware JSON
-app.use(express.json());
+const app = express();
 
-// Usa las rutas
+app.use(cors({ origin: 'http://localhost:5173' })); 
+app.use(express.json());
 app.use('/', routes);
 
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));

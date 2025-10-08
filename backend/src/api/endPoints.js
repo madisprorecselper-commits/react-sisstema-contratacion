@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { usuario } = require('../controllers/usuarioController');
+const { login, registro } = require('../controllers/usuarioController'); 
 
-// Endpoint GET /usuario
-router.get('/usuario', usuario);
+router.post('/login', login);
+router.post('/registro', registro)
+//router.post('/crearCurriculum', crearCurriculum)
+//router.post('/vacanteDisponible', vacanteDisponible)
 
 module.exports = router;
+
