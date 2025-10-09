@@ -11,10 +11,6 @@ export function CrearCurriculumPage() {
   });
   const [curriculum, setCurriculum] = useState(null);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
   useEffect(() => {
     const saved = localStorage.getItem("curriculum");
     if (saved) {
@@ -22,10 +18,14 @@ export function CrearCurriculumPage() {
     }
   }, []);
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setCurriculum(form);
-   //Pendiente enviar datos al Backend
+    localStorage.setItem("curriculum", JSON.stringify(form));
   };
 
   return (
@@ -99,7 +99,7 @@ export function CrearCurriculumPage() {
             </form>
           </div>
         </div>
-        {/* Card para mostrar curriculum*/}
+        {/* Card con la información */}
         {curriculum && (
           <div className="bg-white rounded-lg shadow-md p-6 mt-6">
             <h3 className="text-lg font-bold mb-2">Mi Currículum</h3>

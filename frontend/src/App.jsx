@@ -1,3 +1,10 @@
+import { Routes, Route } from "react-router-dom";
+import { LoginPage } from "./pages/LoginPage";
+import { RegistroPage } from "./pages/RegistroPage";
+import { MenuPrincipalPage } from "./pages/MenuPrincipalPage";
+import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
+import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
+
 
 import { Routes, Route } from "react-router-dom"
 import { LoginPage } from "./pages/LoginPage"
@@ -6,6 +13,7 @@ import { MenuPrincipalPage } from "./pages/MenuPrincipalPage"
 import { CrearCurriculumPage } from "./pages/CrearCurriculumPage"
 import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage"
 
+
 function App() {
   return (
     <Routes>
@@ -13,10 +21,10 @@ function App() {
       <Route path="/registro" element={<RegistroPage />} />
       <Route path="/menuPrincipal" element={<MenuPrincipalPage />} />
       <Route path="/crearCurriculum" element={<CrearCurriculumPage />} />
-      <Route path="/vacanteDisponible" element={<VacanteDisponiblePage />} />
+      <Route path="/vacantesDisponibles" element={<VacanteDisponiblePage />} />
+    
     </Routes>
-  )
-
+  );
 }
 
 export default App;

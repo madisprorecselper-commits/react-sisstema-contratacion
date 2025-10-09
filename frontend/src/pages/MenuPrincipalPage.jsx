@@ -1,6 +1,5 @@
-
 import { NavBar } from "../components/NavBar";
-import { WelcomeMessage } from "../components/Welcomemessage";
+import { WelcomeMessage } from "../components/WelcomeMessage";
 import { Link } from "react-router-dom";
 
 export function MenuPrincipalPage() {
@@ -19,7 +18,7 @@ export function MenuPrincipalPage() {
 
           <WelcomeMessage name={userName} />
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
             <Link
               to="/crearCurriculum"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
@@ -28,7 +27,7 @@ export function MenuPrincipalPage() {
             </Link>
 
             <Link
-              to="/vacanteDisponible"
+              to="/vacantesDisponibles"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
               Vacante Disponible

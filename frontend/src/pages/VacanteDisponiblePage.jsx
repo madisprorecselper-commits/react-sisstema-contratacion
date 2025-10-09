@@ -1,122 +1,33 @@
-import React from "react";
-import { NavBar } from "../components/NavBar"
-import { useNavigate, Link } from "react-router-dom"
+import { NavBar } from "../components/NavBar";
 
 export function VacanteDisponiblePage() {
   return (
     <>
-      {/* Navbar */}
       <NavBar />
-
-      {/* Barra de búsqueda */}
-      <div className="container mx-auto mt-6 px-4">
-        <div className="max-w-xl mx-auto bg-white rounded-full px-6 py-2 shadow-md">
-          <input
-            id="buscar"
-            type="text"
-            placeholder="Cargo o palabra clave"
-            className="w-full bg-transparent outline-none placeholder-gray-500 text-sm"
-          />
-        </div>
-      </div>
-
-      {/* Lista de vacantes */}
-      <div className="container mx-auto mt-10 px-4 mb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Tarjeta de Vacante */}
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 1 - Operario de planta
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 2 - Técnico de producción
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 3 - Auxiliar logístico
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 4 - Diseñador industrial
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 5 - Asistente administrativo
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h6 className="text-lg font-semibold">
-              Vacante 6 - Supervisor de calidad
-            </h6>
-            <p className="text-sm text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit...
-            </p>
-            <a
-              href="#"
-              className="bg-yellow-500 text-black font-semibold px-4 py-2 rounded mt-4 inline-block hover:bg-yellow-400"
-            >
-              POSTULARME
-            </a>
-          </div>
+      <div className="container mx-auto mt-8 px-4">
+        <div className="max-w-xl mx-auto bg-gray-200 rounded-lg shadow-md p-6">
+          <h2 className="text-center text-xl font-semibold text-gray-800 mb-6">
+            Vacantes Disponibles
+          </h2>
+          <ul className="space-y-4">
+            <li className="bg-white rounded shadow p-4">
+              <h3 className="font-bold">Desarrollador Frontend</h3>
+              <p>Requisitos: React, CSS, JavaScript</p>
+              <button className="mt-2 bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800">
+                Postularme
+              </button>
+            </li>
+            <li className="bg-white rounded shadow p-4">
+              <h3 className="font-bold">Analista QA</h3>
+              <p>Requisitos: Pruebas manuales, automatización</p>
+              <button className="mt-2 bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800">
+                Postularme
+              </button>
+            </li>
+            {/* Puedes agregar más vacantes aquí */}
+          </ul>
         </div>
       </div>
     </>
   );
-};
-
-
+}
