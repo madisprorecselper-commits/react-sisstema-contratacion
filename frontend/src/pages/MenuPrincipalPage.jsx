@@ -2,14 +2,17 @@ import { NavBar } from "../components/NavBar";
 import { Link } from "react-router-dom";
 
 export function MenuPrincipalPage() {
+  const userName = localStorage.getItem("userName") || "Usuario";
+
   return (
     <>
       <NavBar />
 
       <div className="container mx-auto mt-20 px-4">
         <div className="max-w-xl mx-auto bg-gray-200 rounded-lg shadow-md p-6">
+          
           <h2 className="text-center text-xl font-semibold text-gray-800 mb-6">
-            Bienvenido
+            Bienvenido{userName ? `, ${userName}` : ""}
           </h2>
 
           <div className="flex flex-wrap justify-center gap-4">

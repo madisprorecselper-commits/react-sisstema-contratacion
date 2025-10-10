@@ -45,7 +45,7 @@ export function LoginPage() {
       if (response.ok) {
         alert("Login correcto! Redirigiendo a RegistroPage...")
 
-        
+        localStorage.setItem("userName", UserName)        
         navigate("/menuPrincipal") 
 
       
@@ -125,10 +125,13 @@ export function LoginPage() {
               >
                 Iniciar Sesión
               </button>
-            </div>
-          </form>
-        </div>
+           </div> 
+        </form>
+
+        {/* Saludo de bienvenida */}
+          {isLogged && <Welcomemessage name={username} />}
       </div>
+    </div>
     </>
   )
 }

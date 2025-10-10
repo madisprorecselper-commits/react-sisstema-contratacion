@@ -5,7 +5,6 @@ import { MenuPrincipalPage } from "./pages/MenuPrincipalPage";
 import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
 import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
 
-
 function App() {
   return (
     <Routes>
