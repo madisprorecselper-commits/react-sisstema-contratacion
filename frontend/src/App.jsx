@@ -5,15 +5,6 @@ import { MenuPrincipalPage } from "./pages/MenuPrincipalPage";
 import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
 import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
 
-
-import { Routes, Route } from "react-router-dom"
-import { LoginPage } from "./pages/LoginPage"
-import { RegistroPage } from "./pages/RegistroPage"
-import { MenuPrincipalPage } from "./pages/MenuPrincipalPage"
-import { CrearCurriculumPage } from "./pages/CrearCurriculumPage"
-import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage"
-
-
 function App() {
   return (
     <Routes>

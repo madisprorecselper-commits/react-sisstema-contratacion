@@ -1,5 +1,4 @@
 import { NavBar } from "../components/NavBar";
-import { WelcomeMessage } from "../components/WelcomeMessage";
 import { Link } from "react-router-dom";
 
 export function MenuPrincipalPage() {
@@ -16,28 +15,24 @@ export function MenuPrincipalPage() {
             Bienvenido{userName ? `, ${userName}` : ""}
           </h2>
 
-          <WelcomeMessage name={userName} />
-
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/crearCurriculum"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
               Crear tu currículum
             </Link>
-
             <Link
               to="/vacantesDisponibles"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
               Vacante Disponible
             </Link>
-
             <Link
-              to="/"
+              to="/perfil"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
-              Tu Perfil
+              Tu perfil
             </Link>
           </div>
         </div>

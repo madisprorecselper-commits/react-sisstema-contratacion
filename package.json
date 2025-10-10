@@ -1,14 +1,9 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "framer-motion": "^12.23.22"
-=======
   "devDependencies": {
     "vite": "^7.1.9"
   },
   "dependencies": {
     "framer-motion": "^12.23.22",
     "react-router-dom": "^7.9.4"
->>>>>>> develop
   }
 }
