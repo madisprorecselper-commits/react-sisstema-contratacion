@@ -24,7 +24,6 @@ export function VacanteDisponiblePage() {
                 Postularme
               </button>
             </li>
-            {/* Puedes agregar más vacantes aquí */}
           </ul>
         </div>
       </div>

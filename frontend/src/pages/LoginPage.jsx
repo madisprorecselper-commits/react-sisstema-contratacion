@@ -1,23 +1,25 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { NavBar } from "../components/NavBar"
+import { WelcomeMessage } from "../components/WelcomeMessage" 
 
 export function LoginPage() {
-  const [role, setRole] = useState(null) // Usuario o Administrador
+  const [role, setRole] = useState(null)// Usuario o Administrador
   const [UserName, setUserName] = useState("")
   const [PassWord, setPassWord] = useState("")
   const [error, setError] = useState("")
+  const [isLogged, setIsLogged] = useState(false) 
   const navigate = useNavigate()
 
   // Estilos dinámicos de botones
   const buttonUser =
     role === "usuario"
-      ? "bg-blue-500 text-white px-4 py-2 rounded"
+      ? "bg-yellow-500 text-white px-4 py-2 rounded"
       : "bg-orange-900 text-white px-4 py-2 rounded"
 
   const buttonAdministrador =
     role === "administrador"
-      ? "bg-blue-500 text-white px-4 py-2 rounded"
+      ? "bg-yellow-500 text-white px-4 py-2 rounded"
       : "bg-orange-900 text-white px-4 py-2 rounded"
 
   const handleUserClick = () => setRole("usuario")
@@ -27,7 +29,7 @@ export function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Validaciones
+     // Validaciones
     if (!UserName || !PassWord || !role) {
       setError("Todos los campos son obligatorios (incluyendo rol).")
       return
@@ -43,12 +45,16 @@ export function LoginPage() {
       const data = await response.json()
 
       if (response.ok) {
-        alert("Login correcto! Redirigiendo a RegistroPage...")
+        // Guarda usuario
+        localStorage.setItem("userName", UserName)
 
-        localStorage.setItem("userName", UserName)        
-        navigate("/menuPrincipal") 
+        // Muestra mensaje de bienvenida
+        setIsLogged(true)
 
-      
+        // Después de 2.5 segundos redirige
+        setTimeout(() => {
+          navigate("/menuPrincipal")
+        }, 2500)
       } else {
         setError(data.message || "Usuario o contraseña incorrectos.")
       }
@@ -58,9 +64,14 @@ export function LoginPage() {
     }
   }
 
+  // Si está logueado, muestra el mensaje de bienvenida
+  if (isLogged) {
+    return <WelcomeMessage name={UserName} />
+  }
+
   return (
     <>
-      {/* Navbar */}
+    {/* Navbar */}
       <NavBar />
 
       <div className="container mx-auto px-4 mt-20">
@@ -99,8 +110,7 @@ export function LoginPage() {
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
               />
             </div>
-
-            {/* Validación de errores */}
+     {/* Validación de errores */}
             {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
             <div className="text-center mb-4">
@@ -125,13 +135,10 @@ export function LoginPage() {
               >
                 Iniciar Sesión
               </button>
-           </div> 
-        </form>
-
-        {/* Saludo de bienvenida */}
-          {isLogged && <Welcomemessage name={username} />}
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   )
 }

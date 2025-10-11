@@ -7,9 +7,8 @@ function capitalizeFirstLetter(name) {
 }
 
 function getDayEmoji() {
-  const day = new Date().getDay(); // 0 = domingo, 1 = lunes, etc.
-  const emojis = ["🌞", "🌈", "🌟", "✨", "💫", "🌺", "🎉"];
-  return emojis[day] || "😊";
+  const day = new Date().getDay();
+
 }
 
 export function WelcomeMessage({ name = "" }) {
@@ -23,38 +22,33 @@ export function WelcomeMessage({ name = "" }) {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, type: "spring" }}
-      className="bg-[#1a1a1a] min-h-screen flex items-center justify-center text-center"
+      className="bg-[#c1c5c7] min-h-screen flex items-center justify-center text-center"
     >
       <div>
         {/* Título principal */}
         <h3
-          className="text-6xl font-extrabold text-[#FFF200]"
+          className="text-6xl font-extrabold text-[#ad4224]"
           style={{
             textShadow:
-              "2px 2px 4px #987A64, 0 0 15px #E8BB78, 0 0 30px #FFF200",
+              "2px 2px 4px #ddc7b1ff, 0 0 15px #8d7b61ff, 0 0 30px #c5714aff",
           }}
         >
-          ¡Bienvenido,{" "}
+          ¡Bienvenid@,{" "}
           <motion.span
             aria-label={`Nombre del usuario: ${displayName || "Usuario"}`}
             initial={{ scale: 0.9 }}
-            animate={{
-              scale: 1,
-              textShadow:
-                "2px 2px 4px #987A64, 0 0 20px #E8BB78, 0 0 40px #FFF200",
-            }}
+          
             transition={{ type: "spring", stiffness: 300, duration: 1 }}
-            className="text-[#E8BB78]"
+            className="text-[#c76c34]"
           >
             {displayName || "Usuario"}
           </motion.span>{" "}
-          <span aria-hidden="true">{emoji}</span>
         </h3>
 
         {/* Subtítulo */}
-        <p className="mt-4 text-lg font-medium text-[#987A64]">
+        <p className="mt-4 text-lg font-medium text-[#c76c34]">
           Nos alegra verte de nuevo en{" "}
-          <span className="font-bold text-[#E8BB78]">Recselpermadispro</span>
+          <span className="font-bold text-[#ad4224]">Recselpermadispro</span>
         </p>
       </div>
     </motion.div>
