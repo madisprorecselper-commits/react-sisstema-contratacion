@@ -1,17 +1,17 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { NavBar } from "../components/NavBar"
-import { WelcomeMessage } from "../components/WelcomeMessage" 
+import { WelcomeMessage } from "../components/WelcomeMessage"
 
 export function LoginPage() {
-  const [role, setRole] = useState(null)// Usuario o Administrador
+  const [role, setRole] = useState(null) // "usuario" o "administrador"
   const [UserName, setUserName] = useState("")
   const [PassWord, setPassWord] = useState("")
   const [error, setError] = useState("")
-  const [isLogged, setIsLogged] = useState(false) 
+  const [isLogged, setIsLogged] = useState(false)
   const navigate = useNavigate()
 
-  // Estilos dinámicos de botones
+  // Estilos dinámicos para los botones de rol
   const buttonUser =
     role === "usuario"
       ? "bg-yellow-500 text-white px-4 py-2 rounded"
@@ -25,13 +25,14 @@ export function LoginPage() {
   const handleUserClick = () => setRole("usuario")
   const handleAdminClick = () => setRole("administrador")
 
-  // Enviar login
+  // Envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError("")
 
-     // Validaciones
-    if (!UserName || !PassWord || !role) {
-      setError("Todos los campos son obligatorios (incluyendo rol).")
+    // Validaciones básicas
+    if (!role || !UserName || !PassWord) {
+      setError("Todos los campos son obligatorios (incluyendo el rol).")
       return
     }
 
@@ -39,24 +40,23 @@ export function LoginPage() {
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ UserName, PassWord, role }),
+        body: JSON.stringify({ role, UserName, PassWord }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        // Guarda usuario
-        localStorage.setItem("userName", UserName)
-
-        // Muestra mensaje de bienvenida
-        setIsLogged(true)
-
-        // Después de 2.5 segundos redirige
-        setTimeout(() => {
-          navigate("/menuPrincipal")
-        }, 2500)
+        // Si el login fue exitoso
+        if (role === "usuario") {
+          localStorage.setItem("userName", UserName)
+          setIsLogged(true)
+          setTimeout(() => navigate("/menuPrincipal"), 2500)
+        } else if (role === "administrador") {
+          localStorage.setItem("adminName", UserName)
+          navigate("/menuPrincipalAdmin")
+        }
       } else {
-        setError(data.message || "Usuario o contraseña incorrectos.")
+        setError(data.message || "Asegurate de escoger bien tu rol y credenciales.")
       }
     } catch (err) {
       console.error(err)
@@ -71,7 +71,6 @@ export function LoginPage() {
 
   return (
     <>
-    {/* Navbar */}
       <NavBar />
 
       <div className="container mx-auto px-4 mt-20">
@@ -80,7 +79,7 @@ export function LoginPage() {
             Iniciar Sesión
           </h2>
 
-          {/* Botones Usuario / Admin */}
+          {/* Botones de selección de rol */}
           <div className="flex justify-center flex-wrap gap-3 mb-6">
             <button className={buttonUser} onClick={handleUserClick}>
               Usuario
@@ -101,6 +100,7 @@ export function LoginPage() {
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
               />
             </div>
+
             <div className="mb-4">
               <input
                 type="password"
@@ -110,7 +110,8 @@ export function LoginPage() {
                 className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
               />
             </div>
-     {/* Validación de errores */}
+
+            {/* Validación de errores */}
             {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
             <div className="text-center mb-4">

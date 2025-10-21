@@ -5,6 +5,7 @@ import { NavBar } from "../components/NavBar"
 export function RegistroPage() {
     const navigate = useNavigate()
   const [formData, setFormData] = useState({
+    role : "usuario",
     UserName: "",
     PassWord: "",
     Nombre: "",

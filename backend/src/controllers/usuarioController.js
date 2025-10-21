@@ -1,15 +1,15 @@
 const db = require('../config/db');
 
-//LOGIN VALIDACIÓN USUARIO      
+//LOGIN VALIDACIÓN USUARIO
 module.exports.login = (req, res) => {
-  const { UserName, PassWord } = req.body;
+  const { role, UserName, PassWord } = req.body;
 
-  if (!UserName || !PassWord) {
+  if (!role || !UserName || !PassWord) {
     return res.status(400).json({ success: false, message: 'Todos los campos son obligatorios' });
   }
 
-  const query = 'SELECT * FROM usuario WHERE UserName = ? AND PassWord = ? LIMIT 1';
-  db.query(query, [UserName, PassWord], (err, results) => {
+  const query = 'SELECT * FROM usuario WHERE role = ? AND UserName = ? AND PassWord = ?  LIMIT 1';
+  db.query(query, [role, UserName, PassWord], (err, results) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ success: false, message: 'Error del servidor' });
@@ -23,23 +23,39 @@ module.exports.login = (req, res) => {
   });
 
 };
+
+
 //REGISTRO USUARIO
 module.exports.registro = (req, res) => {
-  const { UserName, PassWord, Nombre, Documento, Email, Telefono } = req.body;
+  const { role, UserName, PassWord, Nombre, Documento, Email, Telefono } = req.body
 
-  if (!UserName || !PassWord || !Nombre || !Documento || !Email || !Telefono) {
-    return res.status(400).json({ success: false, message: 'Todos los campos son obligatorios' });
+  if (!role || !UserName || !PassWord || !Nombre || !Documento || !Email || !Telefono
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: 'Todos los campos son obligatorios',
+    })
   }
 
-  const query = `INSERT INTO usuario (UserName, PassWord, Nombre, Documento, Email, Telefono) 
-                 VALUES (?, ?, ?, ?, ?, ?)`;
+  const query = `
+    INSERT INTO usuario (role, UserName, PassWord, Nombre, Documento, Email, Telefono)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `
 
-  db.query(query, [UserName, PassWord, Nombre, Documento, Email, Telefono], (err, result) => {
-    if (err) {
-      console.error('Error al registrar usuario:', err);
-      return res.status(500).json({ success: false, message: 'Error del servidor' });
+  db.query( query, [role, UserName, PassWord, Nombre, Documento, Email, Telefono],
+    (err, result) => {if (err) {
+        console.error('Error al registrar usuario:', err) 
+        return res.status(500).json({
+          success: false,
+          message: 'Error del servidor',
+        })
+      }
+
+      return res.status(201).json({
+        success: true,
+        message: 'Usuario registrado correctamente',
+        id: result.insertId,
+      })
     }
-
-    return res.status(201).json({ success: true, message: 'Usuario registrado correctamente', id: result.insertId });
-  });
-};
+  )
+}
