@@ -1,9 +1,9 @@
-import React from "react";
-import { NavBar } from "./NavBar"; // Ajusta la ruta según tu estructura
+import React from "react";  
+import { NavBar } from "../components/NavBar"
 
-export default function VerVacante() {
+export function PostulacionesAdmin() {
   return (
-    <div className="bg-orange-900 min-h-screen">
+    <div className="">
       {/* Encabezado */}
       <NavBar />
 

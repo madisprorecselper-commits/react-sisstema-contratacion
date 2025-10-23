@@ -1,9 +1,9 @@
-import React from "react";
-import { NavBar } from "./NavBar"; // Ajusta la ruta según tu estructura
+import { Link } from "react-router-dom";
+import { NavBar } from "../components/NavBar"
 
-export default function Home() {
+export function MenuPrincipalAdmin() {
   return (
-    <div className="bg-orange-900 min-h-screen">
+    <div>
       {/* NAVBAR */}
       <NavBar />
 
@@ -15,18 +15,20 @@ export default function Home() {
           </h2>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="./postulacionesAdmin.html"
+
+            <Link
+              to="/PostulacionesAdmin"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
               Revisar Postulaciones
-            </a>
-            <a
-              href="./editarYeliminar.html"
+            </Link>
+            <Link
+              to="/EditarYeliminar"
               className="bg-orange-900 text-white px-4 py-2 rounded text-sm hover:bg-orange-800"
             >
               Editar o Eliminar Vacantes
-            </a>
+            </Link>
+            
           </div>
         </div>
       </div>

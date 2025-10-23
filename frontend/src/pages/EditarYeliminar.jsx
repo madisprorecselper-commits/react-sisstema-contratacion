@@ -1,9 +1,9 @@
 import React from "react";
-import { NavBar } from "./components/NavBar"; // Ajusta la ruta según tu proyecto
+import { NavBar } from "../components/NavBar"
 
-export default function GestionVacante() {
+export function EditarYeliminar() {
   return (
-    <div className="bg-orange-900 min-h-screen">
+    <div className="">
       {/* NAVBAR */}
       <NavBar />
 
