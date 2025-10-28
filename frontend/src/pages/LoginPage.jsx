@@ -81,7 +81,7 @@ export function LoginPage() {
       onClick={handleUserClick}
       className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
         role === "usuario"
-          ? "bg-white text-yellow-400 shadow-inner"
+          ? "bg-yellow-200 text-white shadow-inner"
           : "text-gray-500 hover:text-gray-700"
       }`}
     >
@@ -92,7 +92,7 @@ export function LoginPage() {
       onClick={handleAdminClick}
       className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
         role === "administrador"
-          ? "bg-white text-yellow-400 shadow-inner"
+          ? "bg-yellow-200 text-white shadow-inner"
           : "text-gray-500 hover:text-gray-700"
       }`}
     >
@@ -133,7 +133,7 @@ export function LoginPage() {
             <div className="text-center mb-4">
               <button
                 type="submit"
-                className="bg-gray-800 w-sm text-white px-4 py-2 rounded-lg text-sm hover:bg-yellow-200 hover:text-gray-800 transition-colors duration-300"
+                className="bg-yellow-300 w-sm text-gray-800 px-4 py-2 rounded-lg text-sm hover:bg-yellow-200 hover:text-gray-800 transition-colors duration-300"
               >
                 Iniciar Sesión
               </button>
