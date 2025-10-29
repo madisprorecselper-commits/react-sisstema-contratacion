@@ -81,7 +81,7 @@ export function LoginPage() {
       onClick={handleUserClick}
       className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
         role === "usuario"
-          ? "bg-yellow-200 text-white shadow-inner"
+          ? "bg-yellow-200 text-gray-800 shadow-inner"
           : "text-gray-500 hover:text-gray-700"
       }`}
     >
@@ -92,7 +92,7 @@ export function LoginPage() {
       onClick={handleAdminClick}
       className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
         role === "administrador"
-          ? "bg-yellow-200 text-white shadow-inner"
+          ? "bg-yellow-200 text-gray-800 shadow-inner"
           : "text-gray-500 hover:text-gray-700"
       }`}
     >
