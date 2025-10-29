@@ -28,89 +28,117 @@ export function CrearCurriculumPage() {
     localStorage.setItem("curriculum", JSON.stringify(form));
   };
 
-  return (
+return (
     <>
-      <NavBar />
-      <div className="container mx-auto mt-8 px-4">
-        <div className="bg-gray-200 rounded-lg shadow-md p-6">
-          <div className="flex flex-col md:flex-row md:space-x-6">
-            {/* FOTO */}
-            <div className="mb-6 md:mb-0">
-              <div className="w-24 h-24 bg-white border border-gray-400"></div>
+   
+    
+      <div className="container mx-auto px-4 mt-20">
+        <div className="w-4x1 mx-auto bg-gray-200 p-6 rounded-lg shadow-md">
+              <div className="flex min-h-screen bg-gray-50 text-gray-800">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md flex flex-col justify-between">
+        <div>
+          <div className="flex items-center gap-3 p-4 border-b">
+                     <img src={logoUno} alt="Logo 1" className="h-16" />
+           
+          </div>
+
+          <nav className="mt-4">
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="#"
+                  className="flex items-center gap-2 p-3 hover:bg-blue-50 rounded-lg font-medium text-brown-600 bg-yellow-100"
+                >
+                   Information
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/crearCurriculum"
+                  className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
+                >
+                   Crea tu crea tu Curriculum
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/vacantesDisponibles"
+                  className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
+                >
+                  Buscar Vacantes
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/perfil"
+                  className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
+                >
+                  Ver Perfil
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* Botón cerrar sesión */}
+        <div className="p-4">
+          <button className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-400 transition">
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
+        
+        <main className="flex-1 p-8">
+    
+
+
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="col-span-2 bg-gradient-to-r from-yellow-100 to-yellow-100 p-6 rounded-xl shadow-sm">
+            <h2 className="text-lg font-semibold mb-2">
+              Completa tu perfil para destacar ante reclutadores
+            </h2>
+            <Link
+              to="perfil"
+              className="inline-block bg-yellow-300 text-white px-4 py-2 rounded-lg hover:bg-orange-300 transition"
+            >
+              Completar Perfil
+            </Link>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <h3 className="font-semibold mb-2">Progreso del perfil</h3>
+            <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+              <div
+                className="bg-yellow-300 h-3 rounded-full"
+                style={{ width: "75%" }}
+              ></div>
             </div>
-            {/* FORM */}
-            <form className="flex-1 space-y-4" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="descripcion"
-                placeholder="Cuéntanos de ti"
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
-                value={form.descripcion}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="experiencia"
-                placeholder="Mi experiencia laboral"
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
-                value={form.experiencia}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="estudios"
-                placeholder="Mis estudios"
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
-                value={form.estudios}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="idiomas"
-                placeholder="Idiomas"
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
-                value={form.idiomas}
-                onChange={handleChange}
-              />
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  name="documentos"
-                  placeholder="Adjuntar documentos"
-                  className="flex-1 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
-                  value={form.documentos}
-                  onChange={handleChange}
-                />
-                <button
-                  type="button"
-                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm"
-                >
-                  PDF
-                </button>
-              </div>
-              <div className="text-center mt-6">
-                <button
-                  type="submit"
-                  className="bg-orange-900 text-white px-6 py-2 text-sm rounded hover:bg-orange-800"
-                >
-                  GUARDAR
-                </button>
-              </div>
-            </form>
+            <p className="text-sm text-gray-600">75% completado</p>
           </div>
         </div>
-        {/* Card con la información */}
-        {curriculum && (
-          <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-            <h3 className="text-lg font-bold mb-2">Mi Currículum</h3>
-            <p><strong>Descripción:</strong> {curriculum.descripcion}</p>
-            <p><strong>Experiencia:</strong> {curriculum.experiencia}</p>
-            <p><strong>Estudios:</strong> {curriculum.estudios}</p>
-            <p><strong>Idiomas:</strong> {curriculum.idiomas}</p>
-            <p><strong>Documentos:</strong> {curriculum.documentos}</p>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <h3 className="font-bold text-lg mb-2">Misión</h3>
+            <p className="text-gray-600 text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quaerat impedit doloremque et! Nesciunt vitae tenetur aperiam, quis sit adipisci, eius consectetur temporibus velit fugiat, hic asperiores voluptates eaque. Eius!
+            </p>
           </div>
-        )}
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <h3 className="font-bold text-lg mb-2">Visión</h3>
+            <p className="text-gray-600 text-sm">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolorum adipisci eveniet a! Labore possimus recusandae laborum totam. Rerum porro fugiat voluptates est nesciunt? Corporis laudantium voluptatum voluptate totam eum.
+            </p>
+          </div>
+        </div>
+
+      
+      </main>
+      </div>
+
+        </div>
       </div>
     </>
-  );
+  )
 }

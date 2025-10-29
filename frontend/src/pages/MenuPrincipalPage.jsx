@@ -58,7 +58,7 @@ export function MenuPrincipalPage() {
           </nav>
         </div>
 
-        {/* Botón cerrar sesión */}
+  
         <div className="p-4">
           <button className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-400 transition">
             Cerrar sesión
