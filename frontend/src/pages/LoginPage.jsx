@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import logoUno from "../assets/Logo.jpeg"
 import logoDos from "../assets/MadeproDismapro.png"
+import logoSvg from "../assets/svg.png"
 import { WelcomeMessage } from "../components/WelcomeMessage"
 
 export function LoginPage() {
@@ -59,106 +60,122 @@ export function LoginPage() {
     return <WelcomeMessage name={UserName} />
   }
 
-  return (
-    <>
+ return (
+  <div className="flex min-h-screen bg-gradient-to-r from-yellow-50 via-white to-gray-100">
 
-      <div className="container mx-auto px-4 mt-20">
-        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        {/*<div className="flex justify-center" >
-            <img src={logoDos} alt="Logo 2" className="mx-auto max-w-sm h-60" /> 
-          </div>*/} 
-           
-          <h1 className="text-center text-3xl font-black text-gray-800 mb-4">Welcome Back</h1>
-          <h2 className="text-center text-xl font-light text-gray-500 mb-4">
+    <div className="flex items-center justify-center w-full md:w-1/2 px-6">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md border border-gray-100">
+        <h1 className="text-3xl font-extrabold text-gray-800 text-center mb-2">
+          ¡Bienvenido de nuevo!
+        </h1>
+        <h2 className="text-center text-gray-500 mb-6 font-medium">
+          Iniciar Sesión
+        </h2>
+
+        <div className="flex justify-center mb-8">
+          <div className="flex bg-gray-100 rounded-xl shadow-inner overflow-hidden">
+            <button
+              onClick={handleUserClick}
+              className={`px-6 py-2 text-sm font-semibold transition-colors ${
+                role === "usuario"
+                  ? "bg-yellow-300 text-gray-800 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Usuario
+            </button>
+            <button
+              onClick={handleAdminClick}
+              className={`px-6 py-2 text-sm font-semibold transition-colors ${
+                role === "administrador"
+                  ? "bg-yellow-300 text-gray-800 shadow-sm"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Administrador
+            </button>
+          </div>
+        </div>
+
+        {/* Formulario */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block font-semibold text-gray-700 mb-1">
+              Nombre de usuario
+            </label>
+            <input
+              type="text"
+              value={UserName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Tu usuario"
+              className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 outline-none transition"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-gray-700 mb-1">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              value={PassWord}
+              onChange={(e) => setPassWord(e.target.value)}
+              placeholder="Tu contraseña"
+              className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 outline-none transition"
+            />
+          </div>
+
+          {error && (
+            <p className="text-red-600 text-sm text-center font-medium">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-yellow-400 hover:bg-yellow-300 hover:text-gray-800 text-white py-2 rounded-lg font-semibold transition-colors duration-300 shadow-md"
+          >
             Iniciar Sesión
-          </h2>
-          
- 
-          {/* Botones de selección de rol */}
-          <div className="flex justify-center mb-6">
-  <div className="flex bg-gray-100 rounded-lg shadow-sm overflow-hidden">
-    <button
-      onClick={handleUserClick}
-      className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
-        role === "usuario"
-          ? "bg-yellow-200 text-gray-800 shadow-inner"
-          : "text-gray-500 hover:text-gray-700"
-      }`}
-    >
-      Usuario
-    </button>
+          </button>
+        </form>
 
-    <button
-      onClick={handleAdminClick}
-      className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 ${
-        role === "administrador"
-          ? "bg-yellow-200 text-gray-800 shadow-inner"
-          : "text-gray-500 hover:text-gray-700"
-      }`}
-    >
-      Administrador
-    </button>
-  </div>
-</div>
-
-
-
-          {/* Formulario */}
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <h2 className="mb-4 text-gray-800 font-black">Email Adress</h2>
-              <input
-                type="text"
-                placeholder="Usuario"
-                value={UserName}
-                onChange={(e) => setUserName(e.target.value)}
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-100"
-              />
-            </div>
-
-            <div className="mb-4">
-                <h2 className="mb-4 text-gray-800 font-bold">PassWord</h2>
-              <input
-                type="password"
-                placeholder="Contraseña"
-                value={PassWord}
-                onChange={(e) => setPassWord(e.target.value)}
-                className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-100"
-              />
-            </div>
-
-            {/* Validación de errores */}
-            {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
-
-            <div className="text-center mb-4">
-              <button
-                type="submit"
-                className="bg-yellow-300 w-sm text-gray-800 px-4 py-2 rounded-lg text-sm hover:bg-yellow-200 hover:text-gray-800 transition-colors duration-300"
-              >
-                Iniciar Sesión
-              </button>
-           
-            </div>
-
-            <div className="flex justify-center gap-4">
-              <Link
-                to="/registro"
-                className="text-gray-500 hover:underline text-sm0"
-              >
-                Registrarse
-              </Link>
-
-                 <Link
-                to="/recuperar"
-                className="text-gray-800 hover:underline text-sm"
-              >
-                ¿Olvidó su contraseña?
-              </Link>
-              
-            </div>
-          </form>
+        <div className="mt-6 flex justify-between text-sm text-gray-600">
+          <Link
+            to="/registro"
+            className="hover:text-yellow-500 hover:underline transition-colors"
+          >
+            Crear cuenta
+          </Link>
+          <Link
+            to="/recuperar"
+            className="hover:text-yellow-500 hover:underline transition-colors"
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
         </div>
       </div>
-    </>
-  )
+    </div>
+
+
+    <div className="hidden md:flex w-1/2 bg-gradient-to-l from-yellow-200 to-yellow-100 items-center justify-center">
+      <div className="text-center px-10 flex flex-col items-center justify-center">
+
+
+  <h2 className="text-4xl font-extrabold text-gray-800 mb-3">
+    Sistema de Contratación
+  </h2>
+
+  
+  <p className="text-gray-700 text-lg max-w-md">
+    Accede al sistema de contratación y sé parte del crecimiento de nuestra organización.
+  </p>
+
+    <img src={logoSvg}alt="LogoMadepro" className="mx-auto w-80 h-auto mb-4"
+  />
+
+</div>
+
+    </div>
+  </div>
+);
 }

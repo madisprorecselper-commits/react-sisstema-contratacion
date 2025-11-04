@@ -48,31 +48,37 @@ export function RegistroPage() {
     }
   };
 
-  return (
-    <>
-      <NavBar />
-      <div className="container mx-auto px-4 mt-20">
-        <div className="max-w-md mx-auto bg-gray-200 p-6 rounded-lg shadow-md">
-          <h2 className="text-center text-xl font-semibold text-gray-800 mb-6">
-            Registro de Usuario
-          </h2>
+   return (
+    <div className="flex min-h-screen bg-gray-50 items-center justify-center px-4">
+      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
+          Crear una cuenta
+        </h2>
+        <p className="text-center text-gray-500 text-sm mb-6">
+          Completa tus datos para registrarte en el sistema
+        </p>
+
+        {/* Formulario */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 gap-3">
             <input
               type="text"
               name="Nombre"
               placeholder="Nombre completo"
               value={formData.Nombre}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
               type="text"
               name="Documento"
-              placeholder="Documento"
+              placeholder="Documento de identidad"
               value={formData.Documento}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
               type="email"
@@ -80,15 +86,17 @@ export function RegistroPage() {
               placeholder="Correo electrónico"
               value={formData.Email}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
               type="text"
               name="Telefono"
-              placeholder="Número de teléfono"
+              placeholder="Teléfono"
               value={formData.Telefono}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
               type="text"
@@ -96,7 +104,8 @@ export function RegistroPage() {
               placeholder="Nombre de usuario"
               value={formData.UserName}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
               type="password"
@@ -104,20 +113,30 @@ export function RegistroPage() {
               placeholder="Contraseña"
               value={formData.PassWord}
               onChange={handleChange}
-              className="w-full bg-white px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-700"
+              required
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
             />
+          </div>
 
-            <div className="text-center mt-4">
-              <button
-                type="submit"
-                className="bg-orange-900 text-white px-6 py-2 rounded text-sm hover:bg-orange-800"
-              >
-                Continuar
-              </button>
-            </div>
-          </form>
-        </div>
+          <button
+            type="submit"
+            className="w-full bg-yellow-400 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
+          >
+            Registrarme
+          </button>
+        </form>
+
+ 
+        <p className="text-center text-sm text-gray-500 mt-4">
+          ¿Ya tienes una cuenta?{" "}
+          <span
+            onClick={() => navigate("/")}
+            className="text-blue-600 hover:underline cursor-pointer"
+          >
+            Inicia sesión aquí
+          </span>
+        </p>
       </div>
-    </>
-  )
+    </div>
+  );
 }

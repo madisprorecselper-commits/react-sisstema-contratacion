@@ -6,7 +6,9 @@ import { MenuPrincipalAdmin } from "./pages/MenuPrincipalAdmin";
 import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
 import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
 import { PostulacionesAdmin } from "./pages/PostulacionesAdmin";
+import { VerPerfilPage } from "./pages/VerPerfilPage";  
 import { EditarYeliminar } from "./pages/EditarYeliminar";
+
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Route path="/vacantesDisponibles" element={<VacanteDisponiblePage />} />
       <Route path="/PostulacionesAdmin" element={<PostulacionesAdmin />} />
       <Route path="/EditarYeliminar" element={<EditarYeliminar />} />
+      <Route path="/perfil" element={<VerPerfilPage />} />
+  
     
     </Routes>
   );
