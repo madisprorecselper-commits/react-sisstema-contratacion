@@ -51,7 +51,7 @@ export function RegistroPage() {
    return (
     <div className="flex min-h-screen bg-gray-50 items-center justify-center px-4">
       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        {/* Encabezado */}
+
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
           Crear una cuenta
         </h2>
