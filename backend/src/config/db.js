@@ -1,18 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', 
-  database: 'madepro_db'
+const connection = mysql.createConnection({
+  host: "switchyard.proxy.rlwy.net",
+  user: "root",
+  password: "onqsiGvVuSHxAVnNZzsEzxCPVmhoethu",
+  database: "railway",
+  port: 33293,
 });
 
-db.connect((err) => {
+connection.connect((err) => {
   if (err) {
-    console.error('Error conectando a la base de datos:', err);
+    console.error("Error conectando a la base de datos:", err);
     return;
   }
-  console.log('Conectado a MySQL con XAMPP');
+  console.log("Conectado exitosamente a la base de datos Railway");
 });
 
-module.exports = db;
+module.exports = connection;

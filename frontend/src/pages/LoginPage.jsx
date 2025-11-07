@@ -16,6 +16,8 @@ export function LoginPage() {
   const handleUserClick = () => setRole("usuario")
   const handleAdminClick = () => setRole("administrador")
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -28,11 +30,12 @@ export function LoginPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role, UserName, PassWord }),
-      })
+const response = await fetch(`${API_URL}/login`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ role, UserName, PassWord }),
+});
+
 
       const data = await response.json()
 
