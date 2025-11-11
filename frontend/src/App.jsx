@@ -7,6 +7,7 @@ import { CrearCurriculumPage } from "./pages/CrearCurriculumPage";
 import { VacanteDisponiblePage } from "./pages/VacanteDisponiblePage";
 import { PostulacionesAdmin } from "./pages/PostulacionesAdmin";
 import { EditarYeliminar } from "./pages/EditarYeliminar";
+import MisionVision from "./pages/MisionVision";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <Route path="/vacantesDisponibles" element={<VacanteDisponiblePage />} />
       <Route path="/PostulacionesAdmin" element={<PostulacionesAdmin />} />
       <Route path="/EditarYeliminar" element={<EditarYeliminar />} />
+      <Route path="/mision-vision" element={<MisionVision />} />
+
     
     </Routes>
   );
