@@ -1,11 +1,17 @@
 import React from "react";  
-import { NavBar } from "../components/NavBar"
+import { NavBar } from "../components/NavBar";
+import Notificacion from "../components/Notificacion";
 
 export function PostulacionesAdmin() {
   return (
     <div className="">
       {/* Encabezado */}
       <NavBar />
+
+      {/* Notificación de postulaciones */}
+      <div className="mt-6">
+        <Notificacion />
+      </div>
 
       {/* Barra de búsqueda */}
       <div className="w-full max-w-xl mx-auto mt-6 bg-white rounded-full px-6 py-2 shadow">

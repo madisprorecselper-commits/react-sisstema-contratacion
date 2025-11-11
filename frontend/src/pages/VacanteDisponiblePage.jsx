@@ -1,4 +1,6 @@
 import { NavBar } from "../components/NavBar";
+import Notificacion from "../components/Notificacion";
+
 
 export function VacanteDisponiblePage() {
   return (
@@ -27,6 +29,7 @@ export function VacanteDisponiblePage() {
           </ul>
         </div>
       </div>
+       <Notification message={message} onClose={() => setMessage("")} />
     </>
   );
 }
