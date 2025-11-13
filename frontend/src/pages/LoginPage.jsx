@@ -16,7 +16,7 @@ export function LoginPage() {
   const handleUserClick = () => setRole("usuario")
   const handleAdminClick = () => setRole("administrador")
 
-  const API_URL = import.meta.env.VITE_API_URL;
+
 
   // Envío del formulario
   const handleSubmit = async (e) => {
@@ -30,7 +30,7 @@ export function LoginPage() {
     }
 
     try {
-const response = await fetch(`${API_URL}/login`, {
+const response = await fetch(`https://react-sisstema-contratacion.onrender.com/login`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ role, UserName, PassWord }),
