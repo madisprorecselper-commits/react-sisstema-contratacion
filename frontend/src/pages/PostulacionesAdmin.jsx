@@ -1,13 +1,17 @@
 import React from "react";  
-import { NavBar } from "../components/NavBar"
+import { AdminNavBar } from "../components/NavBarAdministrador"
 
 export function PostulacionesAdmin() {
   return (
     <div className="">
-      {/* Encabezado */}
-      <NavBar />
+ 
 
-      {/* Barra de búsqueda */}
+  <div className="flex min-h-screen bg-gray-50 text-gray-800">
+ 
+     <AdminNavBar/>
+ 
+   <main className="flex-1 p-8">
+          {/* Barra de búsqueda */}
       <div className="w-full max-w-xl mx-auto mt-6 bg-white rounded-full px-6 py-2 shadow">
         <input
           type="text"
@@ -53,6 +57,11 @@ export function PostulacionesAdmin() {
           </div>
         </div>
       </div>
+       </main>         
+    </div>
+     
+
+      
     </div>
   );
 }

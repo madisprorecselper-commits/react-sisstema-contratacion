@@ -1,4 +1,5 @@
 import logoUno from "../assets/Logo.jpeg"
+import { CardsJobsRecomend } from "../components/cardsJobsRecomend";
 import { NavBar } from "../components/NavBar";
 import { Link } from "react-router-dom";
 
@@ -114,7 +115,7 @@ export function MenuPrincipalPage() {
 
         
         <h2 className="text-xl font-bold mb-4">Trabajos Recomendados</h2>
-        {/* Trabajos recomendados */}
+         <CardsJobsRecomend/>
       </main>
       </div>
 
