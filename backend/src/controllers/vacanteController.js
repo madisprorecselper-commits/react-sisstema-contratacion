@@ -25,7 +25,9 @@ module.exports.vacantes = (req, res) => {
 
 // OBTENER VACANTES
 module.exports.obtenerVacantes = (req, res) => {
-  const query = 'SELECT * FROM Anuncios_vacantes_disponibles';
+  console.log("Entró al controlador de LIMIT 6");
+
+  const query = `SELECT * FROM Anuncios_vacantes_disponibles`;
 
   db.query(query, (err, results) => {
     if (err) {

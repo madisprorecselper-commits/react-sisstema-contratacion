@@ -52,32 +52,7 @@ export function VacanteDisponiblePage() {
 
       {/* Job Listings */}
       <div className="max-w-4xl mx-auto mt-8 space-y-4 px-6">
-        {/* Job 1 */}
-        <div className="bg-white rounded-lg shadow-sm p-6 flex flex-col md:flex-row justify-between items-start md:items-center">
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800">
-              Mantenimiento de planta
-            </h3>
-            <p className="text-gray-500 text-sm">Madeprro&Dismapro — Bogotá DC</p>
-            <p className="text-gray-600 mt-2 text-sm">
-              Join our dynamic team to build next-generation software solutions.
-              We’re looking for a passionate engineer with experience in React and Node.js
-              to help us innovate and scale our products.
-            </p>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
-                Presencial
-              </span>
-              <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                Remote
-              </span>
-            </div>
-          </div>
-
-          <button className="bg-yellow-300 text-gray-800 px-5 py-2 rounded-lg mt-4 md:mt-0 hover:bg-yellow-200">
-            Apply 
-          </button>
-        </div>
+        
         {/* Job 2 */}
         {items.map(item => (
         <div 
@@ -87,15 +62,13 @@ export function VacanteDisponiblePage() {
             <h3 className="text-lg font-semibold text-gray-800">
               {item.title}
             </h3>
-            <p className="text-gray-500 text-sm">Madeprro&Dismapro — Bogotá DC</p>
+            <p className="text-gray-500 text-sm">{item.ubication_Factory}</p>
             <p className="text-gray-600 mt-2 text-sm">
-              Join our dynamic team to build next-generation software solutions.
-              We’re looking for a passionate engineer with experience in React and Node.js
-              to help us innovate and scale our products.
+              {item.Description}
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
-                Presencial
+                 {item.Remoto_Presencial}
               </span>
               <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
                 Remote

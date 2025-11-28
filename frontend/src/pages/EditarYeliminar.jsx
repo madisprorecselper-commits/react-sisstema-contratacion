@@ -8,6 +8,8 @@ export function EditarYeliminar() {
   const [formData, setFormData] = useState({
     title: "",
     Description: "",
+    ubication_Factory: "",
+    Remoto_Presencial: ""
 
   })
   function handleChange (e) {
@@ -99,6 +101,22 @@ const response = await fetch(`${API_URL}/vacantes`, {
               name="Description"
               placeholder="Descripción"
               value={formData.Description}
+              onChange={handleChange}
+              className="p-2 border rounded"
+            />
+
+               <textarea
+              name="ubication_Factory"
+              placeholder="Ubicación - Factory"
+              value={formData.ubication_Factory}
+              onChange={handleChange}
+              className="p-2 border rounded"
+            />
+
+               <textarea
+              name="Remoto_Presencial"
+              placeholder="Modalidad"
+              value={formData.Remoto_Presencial}
               onChange={handleChange}
               className="p-2 border rounded"
             />
