@@ -29,7 +29,7 @@ export function RegistroPage() {
     e.preventDefault();
 
     try {
-const response = await fetch(`${API_URL}/registro`, {
+const response = await fetch(`https://react-sisstema-contratacion.onrender.com/registro`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(formData)
