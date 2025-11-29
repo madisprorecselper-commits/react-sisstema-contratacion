@@ -1,7 +1,21 @@
 import { NavBar } from "../components/NavBar";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 export function VacanteDisponiblePage() {
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/vacantes')
+    .then(response => {
+      setItems(response.data)
+    })
+    .catch(error => {
+      console.error("Error data", error)
+    })
+  }, [])
   return (
+    
  <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Header */}
       <header className="flex justify-between items-center px-10 py-4 bg-white shadow-sm">
@@ -38,21 +52,23 @@ export function VacanteDisponiblePage() {
 
       {/* Job Listings */}
       <div className="max-w-4xl mx-auto mt-8 space-y-4 px-6">
-        {/* Job 1 */}
-        <div className="bg-white rounded-lg shadow-sm p-6 flex flex-col md:flex-row justify-between items-start md:items-center">
+        
+        {/* Job 2 */}
+        {items.map(item => (
+        <div 
+         key={item.id}
+        className="bg-white rounded-lg shadow-sm p-6 flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
             <h3 className="text-lg font-semibold text-gray-800">
-              Mantenimiento de planta
+              {item.title}
             </h3>
-            <p className="text-gray-500 text-sm">Madeprro&Dismapro — Bogotá DC</p>
+            <p className="text-gray-500 text-sm">{item.ubication_Factory}</p>
             <p className="text-gray-600 mt-2 text-sm">
-              Join our dynamic team to build next-generation software solutions.
-              We’re looking for a passionate engineer with experience in React and Node.js
-              to help us innovate and scale our products.
+              {item.Description}
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
-                Presencial
+                 {item.Remoto_Presencial}
               </span>
               <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
                 Remote
@@ -65,7 +81,7 @@ export function VacanteDisponiblePage() {
           </button>
         </div>
 
-
+  ))}
       </div>
 
 
