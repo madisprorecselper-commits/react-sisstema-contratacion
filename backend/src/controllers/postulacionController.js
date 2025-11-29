@@ -29,6 +29,21 @@ module.exports.postulacion = (req, res) => {
 
 
 
+// OBTENER POSTULACION DEL ASPIRANTE
+module.exports.obtenerPostulaciones = (req, res) => {
+    console.log("Entró al controlador de LIMIT 6");
 
+    const query = `SELECT * FROM postulaciones`;
 
-//OBTENER POSTULACION DEL ASPIRANTE 
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error:', err);
+            return res.status(500).json({ 
+                success: false, 
+                message: 'Error en el servidor' 
+            });
+        }
+
+        return res.json(results);
+    });
+};

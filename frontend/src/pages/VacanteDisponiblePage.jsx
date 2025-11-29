@@ -167,7 +167,7 @@ onClick={() => {
 
 <textarea
   name="mensaje"
-  placeholder="mensaje"
+  placeholder="Nombre de la vacante a la que se quiere postular"
   value={formData.mensaje}
   onChange={handleChange}
   className="p-2 border rounded"
