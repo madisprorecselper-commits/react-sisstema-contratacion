@@ -4,6 +4,49 @@ import axios from 'axios';
 
 export function VacanteDisponiblePage() {
   const [items, setItems] = useState([])
+   const [mostrarFormulario, setMostrarFormulario] = useState(null);
+  const [formData, setFormData] = useState({
+  nombre: "",
+  email: "",
+  telefono: "",
+  mensaje: "",
+  id_vacante: null
+});
+
+function handleChange(e) {
+  const { name, value } = e.target;
+
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+}
+
+   const API_URL = import.meta.env.VITE_API_URL;
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+  
+      try {
+  const response = await fetch(`${API_URL}/postulacion`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+  
+        const data = await response.json();
+  
+        if (data.success) {
+          alert('SOLICITUD APROBADA');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('ERROR DE SOLICITUD');
+      }
+    }
+  console.log("ENVIANDO A BACK:", formData);
+
 
   useEffect(() => {
     axios.get('http://localhost:3000/vacantes')
@@ -76,9 +119,70 @@ export function VacanteDisponiblePage() {
             </div>
           </div>
 
-          <button className="bg-yellow-300 text-gray-800 px-5 py-2 rounded-lg mt-4 md:mt-0 hover:bg-yellow-200">
-            Apply 
-          </button>
+<button 
+onClick={() => {
+  setMostrarFormulario(item.id);
+  setFormData(prev => ({
+    ...prev,
+    id_vacante: item.id
+  }));
+}}
+
+  className="bg-yellow-300 text-gray-800 px-5 py-2 rounded-lg mt-4 md:mt-0 hover:bg-yellow-200"
+>
+  Apply 
+</button>
+
+           {mostrarFormulario === item.id && (
+        <div className="mt-4 p-4 bg-gray-100 rounded shadow">
+          <h2 className="font-bold mb-2">ENVIAR SOLICITUD</h2>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+           <input
+  type="text"
+  name="nombre"
+  placeholder="nombre"
+  value={formData.nombre}
+  onChange={handleChange}
+  className="p-2 border rounded"
+/>
+
+<input
+  type="email"
+  name="email"
+  placeholder="email"
+  value={formData.email}
+  onChange={handleChange}
+  className="p-2 border rounded"
+/>
+
+<input
+  type="text"
+  name="telefono"
+  placeholder="telefono"
+  value={formData.telefono}
+  onChange={handleChange}
+  className="p-2 border rounded"
+/>
+
+<textarea
+  name="mensaje"
+  placeholder="Nombre de la vacante a la que se quiere postular"
+  value={formData.mensaje}
+  onChange={handleChange}
+  className="p-2 border rounded"
+/>
+
+
+            <button
+              type="submit"
+              className="bg-green-600 text-white px-4 py-2 rounded"
+            >
+              ¡POSTULARME!
+            </button>
+          </form>
+        </div>
+           )}
         </div>
 
   ))}
