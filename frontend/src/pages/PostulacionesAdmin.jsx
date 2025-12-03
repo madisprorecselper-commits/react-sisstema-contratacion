@@ -6,15 +6,14 @@ import axios from 'axios';
 export function PostulacionesAdmin() { 
   const [items, setItems] = useState([])
 
-  useEffect(() => { 
-    axios.get('http://localhost:3000/obtenerPostulaciones')
-      .then(response => { 
-        setItems(response.data) 
-      }) 
-      .catch(error => { 
-        console.error("Error data", error) 
-      }) 
-  }, [])
+const API_URL = import.meta.env.VITE_API_URL;
+
+useEffect(() => {
+  axios.get(`${API_URL}/obtenerPostulaciones`)
+    .then(response => setItems(response.data))
+    .catch(error => console.error("Error data", error));
+}, []);
+
 
   return ( 
     <div className="">
