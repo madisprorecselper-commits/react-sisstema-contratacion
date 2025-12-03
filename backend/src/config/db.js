@@ -6,7 +6,9 @@ const connection = mysql.createPool({
   password: process.env.DB_PASS || "LHLaQkMItsfY20M766p1",
   database: process.env.DB_NAME || "bezi4vq23ekf9a7bzhlp",
   port: process.env.DB_PORT || 3306,
-  connectionLimit: 10,
+  waitForConnections: true,
+  connectionLimit: 5,  
+  queueLimit: 0,
 });
 
 connection.getConnection((err, conn) => {

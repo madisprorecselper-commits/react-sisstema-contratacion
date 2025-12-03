@@ -48,15 +48,15 @@ function handleChange(e) {
   console.log("ENVIANDO A BACK:", formData);
 
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/vacantes')
+useEffect(() => {
+  axios.get(`${API_URL}/vacantes`)
     .then(response => {
-      setItems(response.data)
+      setItems(response.data);
     })
     .catch(error => {
-      console.error("Error data", error)
-    })
-  }, [])
+      console.error("Error data", error);
+    });
+}, []);
   return (
     
  <div className="min-h-screen bg-gray-50 text-gray-800">
