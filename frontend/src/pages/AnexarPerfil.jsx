@@ -1,16 +1,104 @@
 import React from "react";
+import { useState } from "react";
 
-export function VerPerfilPage() {
+
+export function AnexarPerfil() {
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [formData, setFormData] = useState({
+    Nombre: "",
+    Gmail: "",
+    Number: ""
+
+  })
+ function handleChange(e) {
+  const { name, value } = e.target;
+  setFormData({
+    ...formData,
+    [name]: value
+  });
+}
+
+
+     const API_URL = import.meta.env.VITE_API_URL;
+     const handleSubmit = async (e) => {
+      e.preventDefault()
+          try {
+const response = await fetch(`${API_URL}/anexar-perfil`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData)
+});
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Datos Guardados Exitosamente');
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al guardar datos');
+    }
+     }
+
   return (
     <>
     <div className="min-h-screen bg-gray-50 text-gray-800 p-8">
 
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-extrabold text-gray-900">My Profile</h1>
-        <button className="bg-yellow-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-yellow-100 transition">
-          Download Resume
+        <button 
+        onClick={() => setMostrarFormulario(true)}
+        className="bg-yellow-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-yellow-100 transition">
+         Completar perfil 
         </button>
       </div>
+
+      {mostrarFormulario && (
+        <div className="mt-4 p-4 bg-gray-100 rounded shadow">
+          <h2 className="font-bold mb-2">Información Personal</h2>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <input
+              type="text"
+              name="Nombre"
+              placeholder="Nombre"
+               value={formData.Nombre}
+              onChange={handleChange}
+              className="p-2 border rounded"
+            />
+               <input
+               type="email"
+              name="Gmail"
+              placeholder="Gmail"
+             value={formData.Gmail}
+              onChange={handleChange}
+              className="p-2 border rounded"
+            />
+
+               <input
+             
+              name="Number"
+              placeholder="Number"
+               value={formData.Number}
+              onChange={handleChange}
+              className="p-2 border rounded"
+            />
+            <h2 className="font-bold mb-2">Estudios</h2>
+            
+          
+
+            <button
+              type="submit"
+              className="bg-green-600 text-white px-4 py-2 rounded"
+            >
+              Guardar Vacante
+            </button>
+          </form>
+        </div>
+      )}
+      
 
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">

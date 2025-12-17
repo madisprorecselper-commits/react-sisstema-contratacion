@@ -45,7 +45,7 @@ function handleChange(e) {
         alert('ERROR DE SOLICITUD');
       }
     }
-  console.log("ENVIANDO A BACK:", formData);
+  
 
 
 useEffect(() => {
@@ -60,20 +60,7 @@ useEffect(() => {
   return (
     
  <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Header */}
-      <header className="flex justify-between items-center px-10 py-4 bg-white shadow-sm">
-        <h1 className="text-2xl font-bold">Explore Our Openings</h1>
 
-        <div className="space-x-4">
-          <button className="text-gray-600 hover:text-gray-800">About Us</button>
-          <button className="bg-white border border-gray-300 text-gray-700 px-4 py-1 rounded hover:bg-gray-100">
-            LogIN
-          </button>
-          <button className="bg-yellow-300 text-brown-800 px-4 py-1 rounded hover:bg-yellow-200">
-            Register
-          </button>
-        </div>
-      </header>
 
       <div className="max-w-4xl mx-auto mt-10 px-6">
         <input

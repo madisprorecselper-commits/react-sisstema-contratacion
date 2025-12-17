@@ -1,16 +1,31 @@
 import logoUno from "../assets/Logo.jpeg"
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 
 export function AdminNavBar () {
+  const [openMenu, setOpenMenu] = useState(false)
     return (
                <>
             {/* Sidebar */}
+
+   <button 
+  className="md:hidden text-2xl"
+  onClick={() => setOpenMenu(!openMenu)}
+>
+  ☰
+</button>
+
+
+
+      
+            <div className={`${openMenu ? "block" : "hidden"} md:flex`}> 
             <aside className="w-64 bg-white shadow-md flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 p-4 border-b">
                            <img src={logoUno} alt="Logo 1" className="h-16" />
                  
                 </div>
+
       
                 <nav className="mt-4">
                   <ul className="space-y-2">
@@ -57,6 +72,7 @@ export function AdminNavBar () {
                 </button>
               </div>
             </aside>
+            </div>
                
     </>
     

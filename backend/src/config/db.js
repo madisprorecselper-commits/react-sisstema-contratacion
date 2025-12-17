@@ -16,7 +16,7 @@ connection.getConnection((err, conn) => {
     console.error("Error de conexión", err);
     return;
   }
-  console.log("Conectado exitosa");
+  console.log("Conexión exitosa");
   conn.release();
 });
 
