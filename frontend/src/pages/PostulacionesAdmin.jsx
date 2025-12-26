@@ -1,5 +1,5 @@
 import React from "react"; 
-import { AdminNavBar } from "../components/NavBarAdministrador"
+import  NavBarAdministrador from "../components/NavBarAdministrador"
 import { useState, useEffect } from "react"; 
 import axios from 'axios';
 
@@ -18,9 +18,10 @@ useEffect(() => {
   return ( 
     <div className="">
       <div className="flex min-h-screen bg-gray-50 text-gray-800">
-        <AdminNavBar/>
+       
 
         <main className="flex-1 p-8">
+             <h1 className="text-3xl font-extrabold text-gray-900">Postulaciones</h1>
 
           {/* Barra de búsqueda */}
           <div className="max-w-4xl mx-auto mt-10 px-6">

@@ -36,10 +36,10 @@ export function LoginPage() {
         if (role === "usuario") {
           localStorage.setItem("userName", UserName)
           setIsLogged(true)
-          setTimeout(() => navigate("/menuPrincipal"), 2500)
+          setTimeout(() => navigate("/usuario"), 2500)
         } else {
           localStorage.setItem("adminName", UserName)
-          navigate("/menuPrincipalAdmin")
+          navigate("/admin")
         }
       } else {
         setError(data.message || "Asegurate de escoger bien tu rol y credenciales.")

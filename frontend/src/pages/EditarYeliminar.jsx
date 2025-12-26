@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { AdminNavBar } from "../components/NavBarAdministrador"
+import NavBarAdministrador from "../components/NavBarAdministrador"
 
 
 export function EditarYeliminar() {
@@ -45,12 +45,12 @@ const response = await fetch(`${API_URL}/vacantes`, {
     }
   }
   return (
-    <div className="">
+    <div>
       {/* NAVBAR */}
     
      <div className="flex min-h-screen bg-gray-50 text-gray-800">
     
-        <AdminNavBar/>
+       
     
       <main className="flex-1 p-8">
              {/* Barra de búsqueda */}

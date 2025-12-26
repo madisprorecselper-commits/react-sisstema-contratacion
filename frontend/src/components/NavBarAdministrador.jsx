@@ -2,7 +2,8 @@ import logoUno from "../assets/Logo.jpeg"
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 
-export function AdminNavBar () {
+
+export default function NavBarAdministrador () {
   const [openMenu, setOpenMenu] = useState(false)
     return (
                <>
@@ -29,36 +30,44 @@ export function AdminNavBar () {
       
                 <nav className="mt-4">
                   <ul className="space-y-2">
-                    <li>
+                     <li>
                       <Link
-                        to="/MenuPrincipalAdmin"
+                        to="Dashboard"
                         className="flex items-center gap-2 p-3 hover:bg-blue-50 rounded-lg font-medium text-brown-600 bg-yellow-100"
                       >
-                         Anuncios
+                         Información General
                       </Link>
                     </li>
                     <li>
                       <Link
-                        to="/PostulacionesAdmin"
-                        className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
+                        to="PostulacionesAdmin"
+                        className="flex items-center gap-2 p-3 hover:bg-blue-50 rounded-lg text-brown-600"
                       >
                          Revisar Postulaciones
                       </Link>
                     </li>
                     <li>
                       <Link
-                        to="/EditarYeliminar"
+                        to="vacantes"
                         className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
                       >
-                        Create / Edit / Delete
+                         Vacantes Disponibles
                       </Link>
                     </li>
                     <li>
                       <Link
-                        to="/perfil"
+                        to="EditarYeliminar"
                         className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
                       >
-                        Ver Perfil
+                        Administración
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="perfil"
+                        className="flex items-center gap-2 p-3 hover:bg-gray-100 rounded-lg"
+                      >
+                        Mi Perfil
                       </Link>
                     </li>
                   </ul>
