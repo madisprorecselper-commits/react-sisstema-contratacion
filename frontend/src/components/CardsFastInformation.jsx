@@ -32,6 +32,13 @@ export default function CardsFastInformation() {
             <div>
 
             </div>
+            
+        </div>
+        <div className="bg-white mt-8">
+               <div>
+            <h1 className="text-2xl font-extrabold text-gray-900 p-4">Aplicaciones Recientes</h1>
+        </div>
+
         </div>
         </>
     )

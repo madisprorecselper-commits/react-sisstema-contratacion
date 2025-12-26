@@ -3,7 +3,7 @@ import NavBarAdministrador  from "../components/NavBarAdministrador";
 
 export default function LayoutAdmin() {
   return (
-    <div className="flex min-h-screen bg-gray-50 text-gray-800">
+    <div className="flex min-h-screen bg-gray-100 text-gray-800">
       
       {/* Sidebar / Navbar Admin */}
       <NavBarAdministrador />
